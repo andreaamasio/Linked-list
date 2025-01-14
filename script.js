@@ -29,8 +29,13 @@ class LinkedList {
     this.size++
   }
 
-  tail = () => {}
-  at(index) {}
+  at(index) {
+    let current = this.head
+    for (let i = 1; i < index; i++) {
+      current = current.next
+    }
+    return current.value
+  }
   toString() {
     let string = ""
     let current = this.head
@@ -45,9 +50,12 @@ class LinkedList {
 let list = new LinkedList("MyList")
 list.append(100)
 list.append(200)
-list.prepend(300)
+list.append(300)
+list.append(400)
+list.append(500)
+list.append(600)
 console.log(list.toString())
-console.log(list.head)
-console.log(list.tail)
+
 console.log(list.size)
+console.log(list.at(5))
 //console.log(list.next.next)
