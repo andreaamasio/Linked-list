@@ -75,10 +75,18 @@ class LinkedList {
     return null
   }
   insertAt(value, index) {
+    if (index > this.size) {
+      return console.log("index is too big, consider using list.append()")
+    }
     let nodeAtIndex = this.at(index)
     nodeAtIndex.next = new Node(nodeAtIndex.value, nodeAtIndex.next)
     nodeAtIndex.value = value
     this.size++
+  }
+  removeAt(index) {
+    let nodePreviousTheIndex = this.at(index - 1)
+    nodePreviousTheIndex.next = nodePreviousTheIndex.next.next
+    this.size--
   }
 }
 let list = new LinkedList("MyList")
@@ -90,6 +98,5 @@ list.append(500)
 list.append(600)
 console.log(list.toString())
 
-console.log(list.insertAt(4000, 4))
+console.log(list.removeAt(4))
 console.log(list.toString())
-//console.log(list.next.next)
