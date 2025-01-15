@@ -62,7 +62,24 @@ class LinkedList {
     }
     return false
   }
-  find(value) {}
+  find(value) {
+    let current = this.head
+    let index = 1
+    while (current) {
+      if (current.value === value) {
+        return index
+      }
+      current = current.next
+      index++
+    }
+    return null
+  }
+  insertAt(value, index) {
+    let nodeAtIndex = this.at(index)
+    nodeAtIndex.next = new Node(nodeAtIndex.value, nodeAtIndex.next)
+    nodeAtIndex.value = value
+    this.size++
+  }
 }
 let list = new LinkedList("MyList")
 list.append(100)
@@ -73,5 +90,6 @@ list.append(500)
 list.append(600)
 console.log(list.toString())
 
-console.log(list.contains(800))
+console.log(list.insertAt(4000, 4))
+console.log(list.toString())
 //console.log(list.next.next)
