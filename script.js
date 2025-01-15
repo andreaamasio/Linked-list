@@ -34,7 +34,7 @@ class LinkedList {
     for (let i = 1; i < index; i++) {
       current = current.next
     }
-    return current.value
+    return current
   }
   toString() {
     let string = ""
@@ -46,6 +46,23 @@ class LinkedList {
     string += `null`
     return string
   }
+  pop() {
+    let secondToLastIndex = this.size - 1
+    let secondToLast = this.at(secondToLastIndex)
+    secondToLast.next = null
+    this.size--
+  }
+  contains(value) {
+    let current = this.head
+    while (current) {
+      if (current.value === value) {
+        return true
+      }
+      current = current.next
+    }
+    return false
+  }
+  find(value) {}
 }
 let list = new LinkedList("MyList")
 list.append(100)
@@ -56,6 +73,5 @@ list.append(500)
 list.append(600)
 console.log(list.toString())
 
-console.log(list.size)
-console.log(list.at(5))
+console.log(list.contains(800))
 //console.log(list.next.next)
